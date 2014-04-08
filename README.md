@@ -13,7 +13,7 @@ This application show how to build application in angular using both $http and R
 
 TODO
 
-remove hard coded path app.js for the web context
-add jasmin and karm test cases
-make project with YEOMEN structure
-add a mobile app by reusing angular
+1. remove hard coded path app.js for the web context. 
+2. add jasmin and karm test cases. 
+3. make project with YEOMEN structure. 
+4. add a mobile app by reusing angular. 
