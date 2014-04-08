@@ -9,9 +9,6 @@ App.factory('Price', function ($resource) {
     var Price = $resource('/angular-spring-app/pricelist/:priceid', {priceid: '@id'},
         {update: {method: 'PUT'}});
 
-//    Price.prototype.isNew = function(){
-//        return (typeof(this.id) === 'undefined');
-//    }
 
     return Price;
 });
