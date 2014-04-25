@@ -7,7 +7,7 @@ The application demonstrates how to configure Spring MVC with AngularJS
 
 Get the application and build using mvn clean install and then deploy into jetty or tomcat and
 
-then open the URL: http://localhost:8080/angular-spring-app 
+then open the URL: http://localhost:8080/angular-spring-app  or http://localhost:8080/AngularSpringApp
 
 (make sure the deployed web application context name is angular-spring-app , there is a hard coding for this context in app.js)
 
