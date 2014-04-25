@@ -6,7 +6,7 @@ var App = angular.module('AngularSpringApp', ['ngResource','AngularSpringApp.fil
 
 App.factory('Price', function ($resource) {
 	// TODO decide on the context variable.
-    var Price = $resource('/angular-spring-app/pricelist/:priceid', {priceid: '@id'},
+    var Price = $resource('pricelist/:priceid', {priceid: '@id'},
         {update: {method: 'PUT'}});
 
 
