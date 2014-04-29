@@ -4,9 +4,108 @@
 	<groupId>org.angular.spring.example</groupId>
 	<artifactId>angular-spring-app</artifactId>
 	<packaging>war</packaging>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>AngularSpringApp Maven Webapp</name>
 	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<clm.serverUrl>http://tfsbuild2.corp.vha.com:8070</clm.serverUrl>
+		<clm.applicationId>ESM</clm.applicationId>
+		<clm.stage>build</clm.stage>
+	</properties>
+	<distributionManagement>
+		<repository>
+			<id>vha.releases</id>
+			<name>Internal Releases</name>
+			<url>http://tfsbuild2.corp.vha.com:7081/nexus/content/repositories/releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>vha.snapshots</id>
+			<name>Internal Snapshots</name>
+			<url>http://tfsbuild2.corp.vha.com:7081/nexus/content/repositories/snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+	<repositories>
+		<repository>
+			<id>VHA-Approved-Repos</id>
+			<url>http://tfsbuild2.corp.vha.com:7081/nexus/content/groups/VHA-Approved-Repos/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+	<build>
+		<finalName>ESM</finalName>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-webdav-jackrabbit</artifactId>
+				<version>2.2</version>
+			</extension>
+		</extensions>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<extensions>true</extensions>
+				<configuration>
+					<keepStagingRepositoryOnCloseRuleFailure>true</keepStagingRepositoryOnCloseRuleFailure>
+					<serverId>vha.releases</serverId>
+					<nexusUrl>http://tfsbuild2.corp.vha.com:7081/nexus/</nexusUrl>
+					<stagingProfileId>32f0a41d95084</stagingProfileId>
+				</configuration>
+				<executions>
+					<execution>
+						<!-- This invokes the plugin in the deploy phase. If this is not the 
+							last module, then the artifacts are stored locally. If it is the last module, 
+							the staging will occur immediately. -->
+						<id>deploy-staged</id>
+						<phase>deploy</phase>
+						<goals>
+							<goal>deploy</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>com.sonatype.clm</groupId>
+				<artifactId>clm-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>index</id>
+						<goals>
+							<goal>index</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>attach</id>
+						<goals>
+							<goal>attach</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>evaluate</id>
+						<goals>
+							<goal>evaluate</goal>
+						</goals>
+						<phase>package</phase>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 	<dependencies>
 
 		<dependency>
@@ -29,7 +128,4 @@
 
 
 	</dependencies>
-	<build>
-		<finalName>AngularSpringApp</finalName>
-	</build>
 </project>
