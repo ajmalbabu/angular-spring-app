@@ -85,4 +85,4 @@ var PriceListController = function($scope,$routeParams, $location,$http, Price) 
 
     
 
-}
+};

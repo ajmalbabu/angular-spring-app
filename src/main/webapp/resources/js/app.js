@@ -2,10 +2,10 @@
 
 var AngularSpringApp = {};
 
-var App = angular.module('AngularSpringApp', ['ngResource','AngularSpringApp.filters', 'AngularSpringApp.services', 'AngularSpringApp.directives']);
+var App = angular.module('AngularSpringApp', ['ngResource','AngularSpringApp.filters', 'AngularSpringApp.services', 'AngularSpringApp.directives','ngGrid']);
 
 App.factory('Price', function ($resource) {
-	// TODO decide on the context variable.
+
     var Price = $resource('pricelist/:priceid', {priceid: '@id'},
         {update: {method: 'PUT'}});
 
@@ -25,6 +25,11 @@ App.config(['$routeProvider', function ($routeProvider) {
         templateUrl: 'pricelist/layout',
         controller: PriceListController
     });
+    
+    $routeProvider.when('/facilities', {
+        templateUrl: 'facilities/layout',
+        controller: FacilitiesController
+    });   
 
     $routeProvider.otherwise({redirectTo: '/members'});
 }]);

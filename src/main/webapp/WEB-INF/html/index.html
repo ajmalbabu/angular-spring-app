@@ -4,8 +4,9 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <title>Service App</title>
     <link rel="stylesheet" href="resources/css/app.css"/>
-    <link rel="stylesheet" href="resources/css/toastr.css"/>    
-    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="resources/css/toastr.css"/>   
+    <link rel="stylesheet" href="resources/css/ng-grid.min.css"/>       
+    <link rel="stylesheet" href="resources/bootstrap/css/bootstrap.min.css" /> 
 </head>
 <body>
 <div id="wrapper">
@@ -13,6 +14,7 @@
     <ul class="menu">
         <li><a href="#/members">Member</a></li> 
         <li><a href="#/pricelist">Price List</a></li>
+        <li><a href="#/facilities">Facilities</a></li>        
     </ul>
     <hr class="" />
     <div ng-view></div>
@@ -27,10 +29,14 @@
 <script src="resources/js/lib/angular/bootstrap.js"></script>
 <script src="resources/js/lib/angular/toastr.js"></script>
 
+<script src="resources/js/lib/angular/ng-grid-2.0.11.min.js"></script>
+
+
 <script src="resources/js/app.js"></script>
 <script src="resources/js/services.js"></script>
 <script src="resources/js/controllers/MemberController.js"></script>
 <script src="resources/js/controllers/PriceListController.js"></script>
+<script src="resources/js/controllers/FacilitiesController.js"></script>
 <script src="resources/js/filters.js"></script>
 <script src="resources/js/directives.js"></script>
 
