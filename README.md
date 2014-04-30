@@ -13,9 +13,10 @@ then open the URL: http://localhost:8080/angular-spring-app  or http://localhost
 
 This application show how to build application in angular using both $http and REST
 
+Added a ng grid based screen to integrate grid feature
+
 TODO
 
-1. remove hard coded path in app.js for the web context. 
 2. add jasmin and karma test cases. 
 3. make project with YEOMAN structure, so that it can be opened in web storm
 4. add a mobile app by reusing angular. 
