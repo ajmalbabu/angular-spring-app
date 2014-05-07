@@ -22,6 +22,7 @@ public class MemberController {
 
     @RequestMapping("memberlist.json")
     public @ResponseBody List<Member> getMemberList() {
+    	System.out.println("member list");
         return membersService.getAllMembers();
     }
 
@@ -47,6 +48,7 @@ public class MemberController {
 
     @RequestMapping("/layout")
     public String getMemberPartialPage(ModelMap modelMap) {
+    	System.out.println("return layout");
         return "members/layout";
     }
 }

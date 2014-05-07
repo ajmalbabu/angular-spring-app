@@ -4,9 +4,16 @@
  * MemberController
  * @constructor
  */
-var MemberController = function($scope, $http) {
+var MemberController = function($scope, $http, $rootScope) {
     $scope.rs = {};
     $scope.editMode = false;
+    
+    $scope.makeUserLoginThenLoadMembers = function() {
+    	$http.get('sso/fetchSsoAuthCookie').success(function(ssoAuthCookieResponse){
+            $rootScope.ssoAuthCookie = ssoAuthCookieResponse;
+            $scope.fetchMembersList();
+        });
+    }
 
     $scope.fetchMembersList = function() {
         $http.get('members/memberlist.json').success(function(rsList){
@@ -88,8 +95,7 @@ var MemberController = function($scope, $http) {
         $scope.error = true;
         $scope.errorMessage = message;
     };
+    
+    $scope.makeUserLoginThenLoadMembers();
 
-    $scope.fetchMembersList();
-
-    $scope.predicate = 'id';
 };
