@@ -1,9 +1,19 @@
 /* app css stylesheet */
 
+#header_id {
+ 	background: url("../images/blue.png") top left repeat; 
+	float: none;
+	height: 90px;
+	left: 0;
+	position: static;
+	top: 0;
+	width: 100%;
+}
+
 #wrapper {
     margin: 0 auto;
     width: 650px;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 
 .menu {
@@ -11,7 +21,8 @@
     list-style: none;
     padding: 0 0 0.5em;
     font-size: 40px;
-    font-weight: bolder;
+    font-weight: lighter;
+    margin-top: 40px;
 }
 
 .menu:before {
